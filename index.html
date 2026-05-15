@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yeray Castro — iOS Developer. Clean code. Maximum experience. Thoughtfully crafted SwiftUI applications for modern Apple users.">
+  <title>Yeray Castro — iOS Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:     #000000;
+      --space:     #1D1D1F;
+      --card:      #2D2D2F;
+      --border:    #3A3A3C;
+      --gray:      #6E6E73;
+      --secondary: #86868B;
+      --white:     #F5F5F7;
+      --surface:   #F5F5F7;
+    }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      background: var(--space);
+      color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 7vw; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.4s, border-color 0.4s;
+      border-bottom: 0.5px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(29,29,31,0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+    .nav-logo { font-size: 17px; font-weight: 600; color: var(--white); text-decoration: none; letter-spacing: -0.5px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--secondary); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-badge { font-size: 12px; font-weight: 500; color: #30D158; display: flex; align-items: center; gap: 6px; }
+    .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: #30D158; animation: pulse 2.5s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    /* ── LANG TOGGLE ── */
+    .lang-toggle {
+      display: flex; align-items: center; gap: 2px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 980px;
+      padding: 4px 6px;
+    }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      padding: 3px 9px; border-radius: 980px;
+      font-size: 12px; font-weight: 600; font-family: inherit;
+      color: var(--secondary);
+      transition: background 0.2s, color 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .lang-btn.active {
+      background: rgba(255,255,255,0.14);
+      color: var(--white);
+    }
+    .lang-btn:hover:not(.active) { color: var(--white); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: var(--space);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 7vw 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(0,113,227,0.07) 0%, transparent 68%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -52%);
+      pointer-events: none;
+    }
+    .hero-content { display: flex; flex-direction: column; gap: 28px; align-items: center; max-width: 960px; position: relative; }
+    .hero-label { font-size: 13px; font-weight: 500; color: var(--gray); letter-spacing: 1.5px; text-transform: uppercase; }
+    .hero-title { font-size: clamp(52px, 7.5vw, 108px); font-weight: 700; letter-spacing: -4px; line-height: 0.92; color: var(--white); }
+    .hero-sub { font-size: clamp(17px, 1.4vw, 21px); font-weight: 300; color: var(--gray); line-height: 1.65; max-width: 520px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 980px; font-size: 15px; font-weight: 500; text-decoration: none; transition: transform 0.2s, background 0.2s, border-color 0.2s; white-space: nowrap; }
+    .btn-white { background: var(--white); color: var(--space); }
+    .btn-white:hover { background: #e2e2e4; transform: scale(1.02); }
+    .btn-outline { background: transparent; color: var(--white); border: 0.5px solid rgba(255,255,255,0.3); }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.65); transform: scale(1.02); }
+
+    /* ── SECTION COMMONS ── */
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 20px; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--surface); color: var(--space); padding: 120px 7vw; }
+    #about .section-label { color: var(--secondary); }
+    .about-top { display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: center; margin-bottom: 72px; }
+    .about-statement {
+      font-size: clamp(26px, 3vw, 40px);
+      font-weight: 700; letter-spacing: -1.5px; line-height: 1.1;
+      color: var(--space);
+    }
+    .about-statement em { font-style: normal; color: #86868B; }
+    .about-photo { width: 100%; max-width: 380px; border-radius: 20px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.12); }
+    .about-photo img { width: 100%; height: auto; display: block; }
+    .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 2px; }
+    .pillar { background: var(--space); padding: 36px 28px; }
+    .pillar-num { font-size: 12px; font-weight: 500; color: var(--secondary); letter-spacing: 1px; margin-bottom: 20px; }
+    .pillar h3 { font-size: 17px; font-weight: 600; color: var(--white); margin-bottom: 10px; letter-spacing: -0.3px; }
+    .pillar p { font-size: 14px; font-weight: 300; color: var(--secondary); line-height: 1.65; }
+
+    /* ── STACK ── */
+    #stack { background: var(--space); padding: 120px 7vw; }
+    .stack-header { margin-bottom: 52px; }
+    .stack-header h2 { font-size: clamp(36px, 4.5vw, 60px); font-weight: 700; letter-spacing: -2px; color: var(--white); }
+    .stack-header p { font-size: 17px; font-weight: 300; color: var(--gray); margin-top: 14px; }
+    .stack-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .stack-tag { padding: 11px 22px; border-radius: 980px; font-size: 15px; font-weight: 500; transition: background 0.2s; }
+    .stack-tag.primary { background: #3A3A3C; color: var(--white); border: 0.5px solid #555; }
+    .stack-tag.primary:hover { background: #4A4A4C; }
+    .stack-tag.secondary { background: var(--card); color: var(--secondary); border: 0.5px solid #3A3A3C; }
+    .stack-tag.secondary:hover { background: #3A3A3C; color: var(--white); }
+
+    /* ── APP STORE ── */
+    #appstore { background: var(--surface); color: var(--space); padding: 120px 7vw; }
+    .appstore-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .appstore-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--space); color: var(--secondary); padding: 7px 16px; border-radius: 980px; font-size: 12px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 28px; }
+    .appstore-title { font-size: clamp(48px, 6vw, 80px); font-weight: 700; letter-spacing: -2.5px; line-height: 0.95; color: var(--space); margin-bottom: 24px; }
+    .appstore-desc { font-size: 18px; font-weight: 300; color: #6E6E73; line-height: 1.65; margin-bottom: 36px; max-width: 440px; }
+    .appstore-cta { display: inline-flex; align-items: center; gap: 10px; background: var(--space); color: var(--white); padding: 14px 28px; border-radius: 14px; font-size: 14px; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.2s; margin-bottom: 28px; }
+    .appstore-cta:hover { background: #3A3A3C; transform: scale(1.02); }
+    .appstore-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .appstore-tags span { background: #E8E8ED; color: #1D1D1F; padding: 6px 14px; border-radius: 980px; font-size: 13px; font-weight: 500; }
+    .app-icon { width: 180px; height: 180px; border-radius: 40px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.15); margin: 0 auto; }
+    .app-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--space); padding: 120px 7vw; }
+    .projects-header { margin-bottom: 52px; }
+    .projects-header h2 { font-size: clamp(36px, 4.5vw, 60px); font-weight: 700; letter-spacing: -2px; color: var(--white); }
+    .projects-header p { font-size: 17px; font-weight: 300; color: var(--gray); margin-top: 14px; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 2px; }
+    .project-card { background: var(--card); padding: 36px 32px; transition: background 0.25s; }
+    .project-card:hover { background: #3A3A3C; }
+    .project-badge { display: inline-block; padding: 4px 12px; border-radius: 980px; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; margin-bottom: 20px; background: rgba(255,255,255,0.08); color: var(--secondary); }
+    .project-badge.featured { background: rgba(255,255,255,0.15); color: var(--white); }
+    .project-card h3 { font-size: 22px; font-weight: 600; color: var(--white); margin-bottom: 12px; letter-spacing: -0.4px; }
+    .project-card > p { font-size: 15px; font-weight: 300; color: var(--secondary); line-height: 1.65; margin-bottom: 24px; }
+    .project-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
+    .project-tech span { font-size: 12px; font-weight: 500; color: var(--gray); background: rgba(255,255,255,0.06); padding: 4px 11px; border-radius: 980px; }
+    .project-link { font-size: 14px; font-weight: 500; color: #0071E3; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: color 0.2s; }
+    .project-link:hover { color: #0077ED; }
+
+    /* ── EDUCATION ── */
+    #education { background: var(--surface); padding: 120px 7vw; }
+    #education .section-label { color: var(--secondary); }
+    #education h2 { font-size: clamp(36px, 4.5vw, 60px); font-weight: 700; letter-spacing: -2px; color: var(--space); margin-bottom: 56px; }
+    .education-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2px; }
+    .edu-card { background: var(--space); padding: 40px 36px; }
+    .edu-period { font-size: 12px; font-weight: 500; color: var(--secondary); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+    .edu-institution { font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 10px; letter-spacing: -0.5px; }
+    .edu-program { font-size: 15px; font-weight: 300; color: var(--secondary); line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--space); padding: 140px 7vw; text-align: center; }
+    .contact-inner { max-width: 640px; margin: 0 auto; }
+    #contact h2 { font-size: clamp(36px, 4.5vw, 60px); font-weight: 700; letter-spacing: -2px; color: var(--white); margin-bottom: 20px; }
+    #contact p { font-size: 18px; font-weight: 300; color: var(--gray); line-height: 1.65; margin-bottom: 52px; }
+    .contact-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); padding: 36px 7vw; display: flex; align-items: center; justify-content: space-between; border-top: 0.5px solid #1A1A1C; }
+    footer p { font-size: 13px; color: #3A3A3C; }
+
+    /* ── ANIMATIONS ── */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.75s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.18s; }
+    .d3 { transition-delay: 0.28s; }
+    .d4 { transition-delay: 0.38s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      #hero { padding: 120px 24px 60px; }
+      .hero-title { letter-spacing: -2.5px; }
+      .hero-sub { max-width: 100%; }
+      #about, #stack, #appstore, #projects, #education, #contact { padding: 80px 24px; }
+      .about-top { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo { max-width: 280px; margin: 0 auto; }
+      .appstore-grid { grid-template-columns: 1fr; gap: 40px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; padding: 28px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">Yeray Castro</a>
+    <ul class="nav-links">
+      <li><a href="#about" data-i18n="nav-about">Sobre mí</a></li>
+      <li><a href="#appstore">App Store</a></li>
+      <li><a href="#projects" data-i18n="nav-projects">Proyectos</a></li>
+      <li><a href="#contact" data-i18n="nav-contact">Contacto</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-badge">
+        <div class="nav-dot"></div>
+        <span data-i18n="nav-available">Disponible</span>
+      </div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-es" onclick="setLanguage('es')">ES</button>
+        <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO — stays in English always -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-label fade-up">iOS Developer · Madrid, Spain</p>
+      <h1 class="hero-title fade-up d1">Clean code.<br>Maximum experience.</h1>
+      <p class="hero-sub fade-up d2">Thoughtfully crafted SwiftUI applications for modern Apple users.</p>
+      <div class="hero-actions fade-up d3">
+        <a href="#projects" class="btn btn-white" data-i18n="hero-cta">Ver Proyectos</a>
+        <a href="https://www.linkedin.com/in/yeray-castro-jimenez/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label fade-up" data-i18n="about-label">Filosofía</p>
+      <div class="about-top">
+        <p class="about-statement fade-up d1" data-i18n="about-statement">
+          Construyo apps iOS <em>a la manera de Apple.</em> Frameworks nativos, arquitectura limpia
+          y cero dependencias externas — porque el gran software <em>no necesita atajos.</em>
+        </p>
+        <div class="about-photo fade-up d2">
+          <img src="./yeray.jpg" alt="Yeray Castro — iOS Developer">
+        </div>
+      </div>
+      <div class="pillars">
+        <div class="pillar fade-up">
+          <p class="pillar-num">01</p>
+          <h3 data-i18n="pillar1-title">SwiftUI Primero</h3>
+          <p data-i18n="pillar1-desc">Interfaces nativas que se sienten exactamente bien — construidas con SwiftUI y alineadas con las Human Interface Guidelines de Apple.</p>
+        </div>
+        <div class="pillar fade-up d1">
+          <p class="pillar-num">02</p>
+          <h3>SwiftData</h3>
+          <p data-i18n="pillar2-desc">Persistencia local al estilo Apple. Sin la complejidad de Core Data, sin ORMs externos — solo gestión de datos limpia y nativa.</p>
+        </div>
+        <div class="pillar fade-up d2">
+          <p class="pillar-num">03</p>
+          <h3>async/await</h3>
+          <p data-i18n="pillar3-desc">Concurrencia moderna que nunca bloquea. Código asíncrono limpio y legible, sin callbacks ni patrones heredados.</p>
+        </div>
+        <div class="pillar fade-up d3">
+          <p class="pillar-num">04</p>
+          <h3 data-i18n="pillar4-title">Cero Dependencias</h3>
+          <p data-i18n="pillar4-desc">Si Apple lo incluye, lo aprovecho al máximo. Si no existe, lo construyo. Apps ligeras, mantenibles y libres de deuda técnica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section id="stack">
+    <div class="section-inner">
+      <div class="stack-header fade-up">
+        <p class="section-label" data-i18n="stack-label">Stack Técnico</p>
+        <h2 data-i18n="stack-title">El stack.</h2>
+        <p data-i18n="stack-desc">100% ecosistema Apple — nativo, moderno y construido para durar.</p>
+      </div>
+      <div class="stack-tags fade-up d1">
+        <span class="stack-tag primary">Swift</span>
+        <span class="stack-tag primary">SwiftUI</span>
+        <span class="stack-tag primary">SwiftData</span>
+        <span class="stack-tag primary">async/await</span>
+        <span class="stack-tag primary">MVVM</span>
+        <span class="stack-tag secondary">Codable</span>
+        <span class="stack-tag secondary">URLSession</span>
+        <span class="stack-tag secondary">WebKit</span>
+        <span class="stack-tag secondary">MapKit</span>
+        <span class="stack-tag secondary">Clean Architecture</span>
+        <span class="stack-tag secondary">Xcode</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP STORE -->
+  <section id="appstore">
+    <div class="section-inner">
+      <div class="appstore-grid">
+        <div class="fade-up">
+          <div class="appstore-eyebrow" data-i18n="appstore-eyebrow">★ Disponible en el App Store</div>
+          <h2 class="appstore-title">Mangora.</h2>
+          <p class="appstore-desc" data-i18n="appstore-desc">
+            Gestor de biblioteca de manga para iPhone. Explora miles de títulos,
+            organiza tu colección por estado — Leyendo, Leído, Favoritos — y
+            descubre nuevos mangas con una interfaz rápida y limpia, construida
+            con los estándares de diseño de Apple. Revisada y aprobada por Apple.
+          </p>
+          <a href="https://apps.apple.com/app/id6767626728" target="_blank" class="appstore-cta" data-i18n="appstore-cta">Descargar en el App Store ↗</a>
+          <div class="appstore-tags">
+            <span>Swift</span>
+            <span>SwiftUI</span>
+            <span>SwiftData</span>
+            <span>async/await</span>
+            <span>MVVM</span>
+          </div>
+        </div>
+        <div class="fade-up d1" style="display:flex;align-items:center;justify-content:center;">
+          <div class="app-icon">
+            <img src="./app-icon.png" alt="Mangora App Icon">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="projects-header fade-up">
+        <p class="section-label" data-i18n="projects-label">Trabajo Seleccionado</p>
+        <h2 data-i18n="projects-title">Proyectos.</h2>
+        <p data-i18n="projects-desc">Proyectos iOS open-source — todos construidos con mentalidad nativa.</p>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card fade-up">
+          <span class="project-badge featured" data-i18n="imangas-badge">Swift Developer Program · Proyecto Final</span>
+          <h3>iMangas</h3>
+          <p data-i18n="imangas-desc">Gestor de colección de manga construido con los estándares de diseño de Apple. Consume una API REST con async/await, almacena datos localmente con SwiftData e integra WebKit para navegación in-app. La base académica que evolucionó en Mangora.</p>
+          <div class="project-tech">
+            <span>Swift</span><span>SwiftUI</span><span>SwiftData</span><span>async/await</span><span>WebKit</span><span>MVVM</span>
+          </div>
+          <a href="https://github.com/YerayCastro/iMangas" target="_blank" class="project-link" data-i18n="github-link">Ver en GitHub ↗</a>
+        </div>
+
+        <div class="project-card fade-up d1">
+          <span class="project-badge" data-i18n="ios-app-badge">App iOS</span>
+          <h3>WatchAll</h3>
+          <p data-i18n="watchall-desc">App nativa para seguir películas y series de TV. Obtiene datos remotos con async/await sin bloquear el hilo principal. Interfaz SwiftUI limpia siguiendo las Human Interface Guidelines de Apple en todo momento.</p>
+          <div class="project-tech">
+            <span>Swift</span><span>SwiftUI</span><span>async/await</span><span>Codable</span><span>URLSession</span><span>MVVM</span>
+          </div>
+          <a href="https://github.com/YerayCastro/WatchAll" target="_blank" class="project-link" data-i18n="github-link">Ver en GitHub ↗</a>
+        </div>
+
+        <div class="project-card fade-up d2">
+          <span class="project-badge" data-i18n="ios-app-badge">App iOS</span>
+          <h3>RickAndMortyTotal</h3>
+          <p data-i18n="rmt-desc">Explorador del universo Rick and Morty a través de su API oficial. Personajes, ubicaciones y episodios cargados de forma asíncrona y presentados con una arquitectura MVVM estructurada.</p>
+          <div class="project-tech">
+            <span>Swift</span><span>SwiftUI</span><span>async/await</span><span>Codable</span><span>URLSession</span><span>MVVM</span>
+          </div>
+          <a href="https://github.com/YerayCastro/RickAndMortyTotal" target="_blank" class="project-link" data-i18n="github-link">Ver en GitHub ↗</a>
+        </div>
+
+        <div class="project-card fade-up">
+          <span class="project-badge" data-i18n="ios-app-badge">App iOS</span>
+          <h3>Employees</h3>
+          <p data-i18n="employees-desc">App de gestión de empleados con CRUD completo y persistencia local via Codable — sin frameworks externos. Búsqueda y filtrado nativo construido íntegramente con las herramientas de Apple.</p>
+          <div class="project-tech">
+            <span>Swift</span><span>SwiftUI</span><span>Codable</span><span>MVVM</span>
+          </div>
+          <a href="https://github.com/YerayCastro/Employees" target="_blank" class="project-link" data-i18n="github-link">Ver en GitHub ↗</a>
+        </div>
+
+        <div class="project-card fade-up d1">
+          <span class="project-badge" data-i18n="ios-app-badge">App iOS</span>
+          <h3>MyGarden</h3>
+          <p data-i18n="mygarden-desc">Tracker de jardín y huerto. Gestiona cultivos, controla plagas y registra el crecimiento de plantas a través de una interfaz SwiftUI intuitiva, respaldada por SwiftData para persistencia local.</p>
+          <div class="project-tech">
+            <span>Swift</span><span>SwiftUI</span><span>SwiftData</span><span>MVVM</span>
+          </div>
+          <a href="https://github.com/YerayCastro/MyGarden" target="_blank" class="project-link" data-i18n="github-link">Ver en GitHub ↗</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-inner">
+      <p class="section-label fade-up" data-i18n="edu-label">Formación</p>
+      <h2 class="fade-up d1" data-i18n="edu-title">Educación.</h2>
+      <div class="education-grid">
+        <div class="edu-card fade-up d1">
+          <p class="edu-period">Oct 2023 – Mar 2024</p>
+          <p class="edu-institution">Apple Coding Academy</p>
+          <p class="edu-program" data-i18n="edu1-desc">Swift Developer Program 2023 — Programa intensivo de 6 meses de desarrollo iOS. Swift, SwiftUI, Xcode y Human Interface Guidelines de Apple aplicadas en proyectos reales.</p>
+        </div>
+        <div class="edu-card fade-up d2">
+          <p class="edu-period">2019 – 2021</p>
+          <p class="edu-institution">ILERNA FP Online</p>
+          <p class="edu-program" data-i18n="edu2-desc">CFGS Desarrollo de Aplicaciones Multiplataforma — Grado superior con base sólida en programación orientada a objetos, acceso a datos y gestión de sistemas de información.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-label fade-up" data-i18n="contact-label">Contacto</p>
+      <h2 class="fade-up d1" data-i18n="contact-title">Construyamos<br>algo juntos.</h2>
+      <p class="fade-up d2" data-i18n="contact-desc">Abierto a posiciones como desarrollador iOS — presencial o remoto. Si estás construyendo algo relevante para el ecosistema Apple, me encantaría escucharte.</p>
+      <div class="contact-actions fade-up d3">
+        <a href="mailto:yeraycastro9@gmail.com" class="btn btn-white" data-i18n="contact-email">Enviar Email</a>
+        <a href="https://www.linkedin.com/in/yeray-castro-jimenez/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+        <a href="https://github.com/YerayCastro" target="_blank" class="btn btn-outline">GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Yeray Castro Jiménez · iOS Developer · Madrid, Spain</p>
+    <p>© 2026 Yeray Castro Development.</p>
+  </footer>
+
+  <script>
+    // ── TRANSLATIONS ──
+    const translations = {
+      es: {
+        'nav-about':       'Sobre mí',
+        'nav-projects':    'Proyectos',
+        'nav-contact':     'Contacto',
+        'nav-available':   'Disponible',
+        'hero-cta':        'Ver Proyectos',
+        'about-label':     'Filosofía',
+        'about-statement': 'Construyo apps iOS <em>a la manera de Apple.</em> Frameworks nativos, arquitectura limpia y cero dependencias externas — porque el gran software <em>no necesita atajos.</em>',
+        'pillar1-title':   'SwiftUI Primero',
+        'pillar1-desc':    'Interfaces nativas que se sienten exactamente bien — construidas con SwiftUI y alineadas con las Human Interface Guidelines de Apple.',
+        'pillar2-desc':    'Persistencia local al estilo Apple. Sin la complejidad de Core Data, sin ORMs externos — solo gestión de datos limpia y nativa.',
+        'pillar3-desc':    'Concurrencia moderna que nunca bloquea. Código asíncrono limpio y legible, sin callbacks ni patrones heredados.',
+        'pillar4-title':   'Cero Dependencias',
+        'pillar4-desc':    'Si Apple lo incluye, lo aprovecho al máximo. Si no existe, lo construyo. Apps ligeras, mantenibles y libres de deuda técnica.',
+        'stack-label':     'Stack Técnico',
+        'stack-title':     'El stack.',
+        'stack-desc':      '100% ecosistema Apple — nativo, moderno y construido para durar.',
+        'appstore-eyebrow':'★ Disponible en el App Store',
+        'appstore-desc':   'Gestor de biblioteca de manga para iPhone. Explora miles de títulos, organiza tu colección por estado — Leyendo, Leído, Favoritos — y descubre nuevos mangas con una interfaz rápida y limpia, construida con los estándares de diseño de Apple. Revisada y aprobada por Apple.',
+        'appstore-cta':    'Descargar en el App Store ↗',
+        'projects-label':  'Trabajo Seleccionado',
+        'projects-title':  'Proyectos.',
+        'projects-desc':   'Proyectos iOS open-source — todos construidos con mentalidad nativa.',
+        'imangas-badge':   'Swift Developer Program · Proyecto Final',
+        'ios-app-badge':   'App iOS',
+        'imangas-desc':    'Gestor de colección de manga construido con los estándares de diseño de Apple. Consume una API REST con async/await, almacena datos localmente con SwiftData e integra WebKit para navegación in-app. La base académica que evolucionó en Mangora.',
+        'watchall-desc':   'App nativa para seguir películas y series de TV. Obtiene datos remotos con async/await sin bloquear el hilo principal. Interfaz SwiftUI limpia siguiendo las Human Interface Guidelines de Apple en todo momento.',
+        'rmt-desc':        'Explorador del universo Rick and Morty a través de su API oficial. Personajes, ubicaciones y episodios cargados de forma asíncrona y presentados con una arquitectura MVVM estructurada.',
+        'employees-desc':  'App de gestión de empleados con CRUD completo y persistencia local via Codable — sin frameworks externos. Búsqueda y filtrado nativo construido íntegramente con las herramientas de Apple.',
+        'mygarden-desc':   'Tracker de jardín y huerto. Gestiona cultivos, controla plagas y registra el crecimiento de plantas a través de una interfaz SwiftUI intuitiva, respaldada por SwiftData para persistencia local.',
+        'github-link':     'Ver en GitHub ↗',
+        'edu-label':       'Formación',
+        'edu-title':       'Educación.',
+        'edu1-desc':       'Swift Developer Program 2023 — Programa intensivo de 6 meses de desarrollo iOS. Swift, SwiftUI, Xcode y Human Interface Guidelines de Apple aplicadas en proyectos reales.',
+        'edu2-desc':       'CFGS Desarrollo de Aplicaciones Multiplataforma — Grado superior con base sólida en programación orientada a objetos, acceso a datos y gestión de sistemas de información.',
+        'contact-label':   'Contacto',
+        'contact-title':   'Construyamos<br>algo juntos.',
+        'contact-desc':    'Abierto a posiciones como desarrollador iOS — presencial o remoto. Si estás construyendo algo relevante para el ecosistema Apple, me encantaría escucharte.',
+        'contact-email':   'Enviar Email',
+      },
+      en: {
+        'nav-about':       'About',
+        'nav-projects':    'Projects',
+        'nav-contact':     'Contact',
+        'nav-available':   'Available',
+        'hero-cta':        'View Projects',
+        'about-label':     'Philosophy',
+        'about-statement': 'I build iOS apps <em>the Apple way.</em> Native frameworks, clean architecture, and zero external dependencies — because great software <em>doesn\'t need shortcuts.</em>',
+        'pillar1-title':   'SwiftUI First',
+        'pillar1-desc':    'Native interfaces that feel exactly right — built with SwiftUI and aligned with Apple\'s Human Interface Guidelines.',
+        'pillar2-desc':    'Local persistence done the Apple way. No Core Data complexity, no external ORMs — just clean, native data management.',
+        'pillar3-desc':    'Modern concurrency that never blocks. Clean, readable asynchronous code without callbacks or legacy patterns.',
+        'pillar4-title':   'Zero Dependencies',
+        'pillar4-desc':    'If Apple ships it, I use it. If not, I build it. Apps that are lightweight, maintainable, and free of technical debt.',
+        'stack-label':     'Tech Stack',
+        'stack-title':     'The stack.',
+        'stack-desc':      '100% Apple ecosystem — native, modern, and built to last.',
+        'appstore-eyebrow':'★ Now on the App Store',
+        'appstore-desc':   'Personal manga library manager for iPhone. Browse thousands of titles, organize your collection by status — Reading, Read, Favorites — and discover new mangas through a fast, clean interface built to Apple\'s design standards. Reviewed and approved by Apple.',
+        'appstore-cta':    'Download on the App Store ↗',
+        'projects-label':  'Selected Work',
+        'projects-title':  'Projects.',
+        'projects-desc':   'Open-source iOS projects — all built with a native-first mindset.',
+        'imangas-badge':   'Swift Developer Program · Final Project',
+        'ios-app-badge':   'iOS App',
+        'imangas-desc':    'Manga collection manager built to Apple\'s design standards. Consumes a REST API using async/await, stores data locally with SwiftData, and integrates WebKit for in-app navigation. The academic foundation that evolved into Mangora.',
+        'watchall-desc':   'Native app for tracking movies and TV series. Fetches remote data using async/await with zero blocking on the main thread. Clean SwiftUI interface following Apple\'s Human Interface Guidelines throughout.',
+        'rmt-desc':        'Explorer for the Rick and Morty universe via the official API. Characters, locations, and episodes loaded asynchronously and presented through a structured MVVM architecture.',
+        'employees-desc':  'Full CRUD employee management app with local persistence via Codable — no external frameworks. Native search and filtering built entirely with Apple\'s own tools.',
+        'mygarden-desc':   'Garden and vegetable patch tracker. Manage crops, monitor pest control, and log plant growth through an intuitive SwiftUI interface backed by SwiftData for local persistence.',
+        'github-link':     'View on GitHub ↗',
+        'edu-label':       'Background',
+        'edu-title':       'Education.',
+        'edu1-desc':       'Swift Developer Program 2023 — Intensive 6-month iOS development program. Swift, SwiftUI, Xcode, and Apple Human Interface Guidelines applied in real projects.',
+        'edu2-desc':       'CFGS Multiplatform Application Development — Higher degree with a solid foundation in object-oriented programming, data access, and information systems management.',
+        'contact-label':   'Get in Touch',
+        'contact-title':   'Let\'s build<br>something.',
+        'contact-desc':    'Open to iOS developer positions — on-site or remote. If you\'re building something meaningful for the Apple ecosystem, I\'d love to hear about it.',
+        'contact-email':   'Send an Email',
+      }
+    };
+
+    let currentLang = 'es';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      // Update all translatable elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[lang][key] !== undefined) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+
+      // Update button states
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    }
+
+    // ── NAV ON SCROLL ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ── SMOOTH SCROLL ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+
+    // ── FADE-UP ANIMATIONS ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
