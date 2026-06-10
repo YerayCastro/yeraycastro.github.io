@@ -28,7 +28,7 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-
+ 
     /* ── NAVIGATION ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -51,7 +51,7 @@
     .nav-badge { font-size: 12px; font-weight: 500; color: #30D158; display: flex; align-items: center; gap: 6px; }
     .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: #30D158; animation: pulse 2.5s ease-in-out infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-
+ 
     /* ── LANG TOGGLE ── */
     .lang-toggle {
       display: flex; align-items: center; gap: 2px;
@@ -72,7 +72,7 @@
       color: var(--white);
     }
     .lang-btn:hover:not(.active) { color: var(--white); }
-
+ 
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
@@ -105,11 +105,11 @@
     .btn-white:hover { background: #e2e2e4; transform: scale(1.02); }
     .btn-outline { background: transparent; color: var(--white); border: 0.5px solid rgba(255,255,255,0.3); }
     .btn-outline:hover { border-color: rgba(255,255,255,0.65); transform: scale(1.02); }
-
+ 
     /* ── SECTION COMMONS ── */
     .section-inner { max-width: 1100px; margin: 0 auto; }
     .section-label { font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 20px; }
-
+ 
     /* ── ABOUT ── */
     #about { background: var(--surface); color: var(--space); padding: 120px 7vw; }
     #about .section-label { color: var(--secondary); }
@@ -127,7 +127,7 @@
     .pillar-num { font-size: 12px; font-weight: 500; color: var(--secondary); letter-spacing: 1px; margin-bottom: 20px; }
     .pillar h3 { font-size: 17px; font-weight: 600; color: var(--white); margin-bottom: 10px; letter-spacing: -0.3px; }
     .pillar p { font-size: 14px; font-weight: 300; color: var(--secondary); line-height: 1.65; }
-
+ 
     /* ── STACK ── */
     #stack { background: var(--space); padding: 120px 7vw; }
     .stack-header { margin-bottom: 52px; }
@@ -139,7 +139,7 @@
     .stack-tag.primary:hover { background: #4A4A4C; }
     .stack-tag.secondary { background: var(--card); color: var(--secondary); border: 0.5px solid #3A3A3C; }
     .stack-tag.secondary:hover { background: #3A3A3C; color: var(--white); }
-
+ 
     /* ── APP STORE ── */
     #appstore { background: var(--surface); color: var(--space); padding: 120px 7vw; }
     .appstore-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -152,7 +152,7 @@
     .appstore-tags span { background: #E8E8ED; color: #1D1D1F; padding: 6px 14px; border-radius: 980px; font-size: 13px; font-weight: 500; }
     .app-icon { width: 180px; height: 180px; border-radius: 40px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.15); margin: 0 auto; }
     .app-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
+ 
     /* ── PROJECTS ── */
     #projects { background: var(--space); padding: 120px 7vw; }
     .projects-header { margin-bottom: 52px; }
@@ -169,7 +169,7 @@
     .project-tech span { font-size: 12px; font-weight: 500; color: var(--gray); background: rgba(255,255,255,0.06); padding: 4px 11px; border-radius: 980px; }
     .project-link { font-size: 14px; font-weight: 500; color: #0071E3; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: color 0.2s; }
     .project-link:hover { color: #0077ED; }
-
+ 
     /* ── EDUCATION ── */
     #education { background: var(--surface); padding: 120px 7vw; }
     #education .section-label { color: var(--secondary); }
@@ -179,18 +179,18 @@
     .edu-period { font-size: 12px; font-weight: 500; color: var(--secondary); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
     .edu-institution { font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 10px; letter-spacing: -0.5px; }
     .edu-program { font-size: 15px; font-weight: 300; color: var(--secondary); line-height: 1.6; }
-
+ 
     /* ── CONTACT ── */
     #contact { background: var(--space); padding: 140px 7vw; text-align: center; }
     .contact-inner { max-width: 640px; margin: 0 auto; }
     #contact h2 { font-size: clamp(36px, 4.5vw, 60px); font-weight: 700; letter-spacing: -2px; color: var(--white); margin-bottom: 20px; }
     #contact p { font-size: 18px; font-weight: 300; color: var(--gray); line-height: 1.65; margin-bottom: 52px; }
     .contact-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
+ 
     /* ── FOOTER ── */
     footer { background: var(--black); padding: 36px 7vw; display: flex; align-items: center; justify-content: space-between; border-top: 0.5px solid #1A1A1C; }
     footer p { font-size: 13px; color: #3A3A3C; }
-
+ 
     /* ── ANIMATIONS ── */
     .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.75s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94); }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
@@ -198,7 +198,7 @@
     .d2 { transition-delay: 0.18s; }
     .d3 { transition-delay: 0.28s; }
     .d4 { transition-delay: 0.38s; }
-
+ 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
@@ -210,12 +210,13 @@
       .about-top { grid-template-columns: 1fr; gap: 40px; }
       .about-photo { max-width: 280px; margin: 0 auto; }
       .appstore-grid { grid-template-columns: 1fr; gap: 40px; }
+      .appstore-visual { display: none; }
       footer { flex-direction: column; gap: 8px; text-align: center; padding: 28px 24px; }
     }
   </style>
 </head>
 <body>
-
+ 
   <!-- NAVIGATION -->
   <nav id="nav">
     <a href="#hero" class="nav-logo">Yeray Castro</a>
@@ -236,8 +237,8 @@
       </div>
     </div>
   </nav>
-
-  <!-- HERO — stays in English always -->
+ 
+  <!-- HERO — always in English -->
   <section id="hero">
     <div class="hero-content">
       <p class="hero-label fade-up">iOS Developer · Madrid, Spain</p>
@@ -249,7 +250,7 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- ABOUT -->
   <section id="about">
     <div class="section-inner">
@@ -287,7 +288,7 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- TECH STACK -->
   <section id="stack">
     <div class="section-inner">
@@ -311,63 +312,65 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- APP STORE -->
-<section id="appstore">
-  <div class="section-inner">
-    <p class="section-label fade-up" style="color:var(--secondary);">Apps publicadas</p>
-
-    <div class="appstore-grid" style="margin-bottom:80px;">
-      <div class="fade-up">
-        <div class="appstore-eyebrow">★ Disponible en el App Store</div>
-        <h2 class="appstore-title">Lumexia.</h2>
-        <p class="appstore-desc">
-          Gestor de biblioteca de libros para iPhone. Explora catálogos, organiza
-          tu colección — Favoritos y Leídos — con ficha técnica completa por libro:
-          autor, año, páginas, ISBN, precio y valoración. Construida con los
-          estándares de diseño de Apple. Revisada y aprobada por Apple.
-        </p>
-        <a href="https://apps.apple.com/app/id6771335712" target="_blank" class="appstore-cta">Descargar en el App Store ↗</a>
-        <div class="appstore-tags">
-          <span>Swift</span>
-          <span>SwiftUI</span>
-          <span>SwiftData</span>
-          <span>async/await</span>
-          <span>MVVM</span>
+  <section id="appstore">
+    <div class="section-inner">
+      <p class="section-label fade-up" style="color:var(--secondary);" data-i18n="appstore-label">Apps publicadas</p>
+ 
+      <!-- Lumexia -->
+      <div class="appstore-grid" style="margin-bottom:80px;">
+        <div class="fade-up">
+          <div class="appstore-eyebrow" data-i18n="appstore-eyebrow">★ Disponible en el App Store</div>
+          <h2 class="appstore-title">Lumexia.</h2>
+          <p class="appstore-desc" data-i18n="lumexia-desc">
+            Gestor de biblioteca de libros para iPhone. Explora catálogos, organiza
+            tu colección — Favoritos y Leídos — con ficha técnica completa por libro:
+            autor, año, páginas, ISBN, precio y valoración. Construida con los
+            estándares de diseño de Apple. Revisada y aprobada por Apple.
+          </p>
+          <a href="https://apps.apple.com/app/id6771335712" target="_blank" class="appstore-cta" data-i18n="appstore-cta">Descargar en el App Store ↗</a>
+          <div class="appstore-tags">
+            <span>Swift</span>
+            <span>SwiftUI</span>
+            <span>SwiftData</span>
+            <span>async/await</span>
+            <span>MVVM</span>
+          </div>
+        </div>
+        <div class="fade-up d1" style="display:flex;align-items:center;justify-content:center;">
+          <img src="./lumexia-icon.png" alt="Lumexia App Icon" style="width:180px;height:180px;border-radius:40px;box-shadow:0 40px 80px rgba(0,0,0,0.15);">
         </div>
       </div>
-      <div class="fade-up d1" style="display:flex;align-items:center;justify-content:center;">
-        <img src="./LumexiaIcon.png" alt="Lumexia App Icon" style="width:180px;height:180px;border-radius:40px;box-shadow:0 40px 80px rgba(0,0,0,0.15);">
-      </div>
-    </div>
-
-    <div class="appstore-grid">
-      <div class="fade-up">
-        <div class="appstore-eyebrow">★ Disponible en el App Store</div>
-        <h2 class="appstore-title">Mangora.</h2>
-        <p class="appstore-desc">
-          Gestor de biblioteca de manga para iPhone. Explora miles de títulos,
-          organiza tu colección por estado — Leyendo, Leído, Favoritos — y
-          descubre nuevos mangas con una interfaz rápida y limpia, construida
-          con los estándares de diseño de Apple. Revisada y aprobada por Apple.
-        </p>
-        <a href="https://apps.apple.com/app/id6767626728" target="_blank" class="appstore-cta">Descargar en el App Store ↗</a>
-        <div class="appstore-tags">
-          <span>Swift</span>
-          <span>SwiftUI</span>
-          <span>SwiftData</span>
-          <span>async/await</span>
-          <span>MVVM</span>
+ 
+      <!-- Mangora -->
+      <div class="appstore-grid">
+        <div class="fade-up">
+          <div class="appstore-eyebrow" data-i18n="appstore-eyebrow">★ Disponible en el App Store</div>
+          <h2 class="appstore-title">Mangora.</h2>
+          <p class="appstore-desc" data-i18n="mangora-desc">
+            Gestor de biblioteca de manga para iPhone. Explora miles de títulos,
+            organiza tu colección por estado — Leyendo, Leído, Favoritos — y
+            descubre nuevos mangas con una interfaz rápida y limpia, construida
+            con los estándares de diseño de Apple. Revisada y aprobada por Apple.
+          </p>
+          <a href="https://apps.apple.com/app/id6767626728" target="_blank" class="appstore-cta" data-i18n="appstore-cta">Descargar en el App Store ↗</a>
+          <div class="appstore-tags">
+            <span>Swift</span>
+            <span>SwiftUI</span>
+            <span>SwiftData</span>
+            <span>async/await</span>
+            <span>MVVM</span>
+          </div>
+        </div>
+        <div class="fade-up d1" style="display:flex;align-items:center;justify-content:center;">
+          <img src="./app-icon.png" alt="Mangora App Icon" style="width:180px;height:180px;border-radius:40px;box-shadow:0 40px 80px rgba(0,0,0,0.15);">
         </div>
       </div>
-      <div class="fade-up d1" style="display:flex;align-items:center;justify-content:center;">
-        <img src="./app-icon.png" alt="Mangora App Icon" style="width:180px;height:180px;border-radius:40px;box-shadow:0 40px 80px rgba(0,0,0,0.15);">
-      </div>
+ 
     </div>
-
-  </div>
-</section>
-
+  </section>
+ 
   <!-- PROJECTS -->
   <section id="projects">
     <div class="section-inner">
@@ -377,8 +380,8 @@
         <p data-i18n="projects-desc">Proyectos iOS open-source — todos construidos con mentalidad nativa.</p>
       </div>
       <div class="projects-grid">
-
-        <div class="project-card fade-up">
+ 
+        <div class="project-card fade-up d1">
           <span class="project-badge featured" data-i18n="imangas-badge">Swift Developer Program · Proyecto Final</span>
           <h3>iMangas</h3>
           <p data-i18n="imangas-desc">Gestor de colección de manga construido con los estándares de diseño de Apple. Consume una API REST con async/await, almacena datos localmente con SwiftData e integra WebKit para navegación in-app. La base académica que evolucionó en Mangora.</p>
@@ -387,7 +390,7 @@
           </div>
           <a href="https://github.com/YerayCastro/iMangas" target="_blank" class="project-link" data-i18n="github-link">Ver en GitHub ↗</a>
         </div>
-
+ 
         <div class="project-card fade-up d1">
           <span class="project-badge" data-i18n="ios-app-badge">App iOS</span>
           <h3>WatchAll</h3>
@@ -397,7 +400,7 @@
           </div>
           <a href="https://github.com/YerayCastro/WatchAll" target="_blank" class="project-link" data-i18n="github-link">Ver en GitHub ↗</a>
         </div>
-
+ 
         <div class="project-card fade-up d2">
           <span class="project-badge" data-i18n="ios-app-badge">App iOS</span>
           <h3>RickAndMortyTotal</h3>
@@ -407,7 +410,17 @@
           </div>
           <a href="https://github.com/YerayCastro/RickAndMortyTotal" target="_blank" class="project-link" data-i18n="github-link">Ver en GitHub ↗</a>
         </div>
-
+ 
+        <div class="project-card fade-up">
+          <span class="project-badge" data-i18n="ios-app-badge">App iOS</span>
+          <h3>Employees</h3>
+          <p data-i18n="employees-desc">App de gestión de empleados con CRUD completo y persistencia local via Codable — sin frameworks externos. Búsqueda y filtrado nativo construido íntegramente con las herramientas de Apple.</p>
+          <div class="project-tech">
+            <span>Swift</span><span>SwiftUI</span><span>Codable</span><span>MVVM</span>
+          </div>
+          <a href="https://github.com/YerayCastro/Employees" target="_blank" class="project-link" data-i18n="github-link">Ver en GitHub ↗</a>
+        </div>
+ 
         <div class="project-card fade-up d1">
           <span class="project-badge" data-i18n="ios-app-badge">App iOS</span>
           <h3>MyGarden</h3>
@@ -417,11 +430,11 @@
           </div>
           <a href="https://github.com/YerayCastro/MyGarden" target="_blank" class="project-link" data-i18n="github-link">Ver en GitHub ↗</a>
         </div>
-
+ 
       </div>
     </div>
   </section>
-
+ 
   <!-- EDUCATION -->
   <section id="education">
     <div class="section-inner">
@@ -441,7 +454,7 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- CONTACT -->
   <section id="contact">
     <div class="contact-inner">
@@ -455,123 +468,129 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- FOOTER -->
   <footer>
     <p>Yeray Castro Jiménez · iOS Developer · Madrid, Spain</p>
     <p>© 2026 Yeray Castro Development.</p>
   </footer>
-
+ 
   <script>
     // ── TRANSLATIONS ──
     const translations = {
       es: {
-        'nav-about':       'Sobre mí',
-        'nav-projects':    'Proyectos',
-        'nav-contact':     'Contacto',
-        'nav-available':   'Disponible',
-        'hero-cta':        'Ver Proyectos',
-        'about-label':     'Filosofía',
-        'about-statement': 'Construyo apps iOS <em>a la manera de Apple.</em> Frameworks nativos, arquitectura limpia y cero dependencias externas — porque el gran software <em>no necesita atajos.</em>',
-        'pillar1-title':   'SwiftUI Primero',
-        'pillar1-desc':    'Interfaces nativas que se sienten exactamente bien — construidas con SwiftUI y alineadas con las Human Interface Guidelines de Apple.',
-        'pillar2-desc':    'Persistencia local al estilo Apple. Sin la complejidad de Core Data, sin ORMs externos — solo gestión de datos limpia y nativa.',
-        'pillar3-desc':    'Concurrencia moderna que nunca bloquea. Código asíncrono limpio y legible, sin callbacks ni patrones heredados.',
-        'pillar4-title':   'Cero Dependencias',
-        'pillar4-desc':    'Si Apple lo incluye, lo aprovecho al máximo. Si no existe, lo construyo. Apps ligeras, mantenibles y libres de deuda técnica.',
-        'stack-label':     'Stack Técnico',
-        'stack-title':     'El stack.',
-        'stack-desc':      '100% ecosistema Apple — nativo, moderno y construido para durar.',
-        'appstore-eyebrow':'★ Disponible en el App Store',
-        'appstore-desc':   'Gestor de biblioteca de manga para iPhone. Explora miles de títulos, organiza tu colección por estado — Leyendo, Leído, Favoritos — y descubre nuevos mangas con una interfaz rápida y limpia, construida con los estándares de diseño de Apple. Revisada y aprobada por Apple.',
-        'appstore-cta':    'Descargar en el App Store ↗',
-        'projects-label':  'Trabajo Seleccionado',
-        'projects-title':  'Proyectos.',
-        'projects-desc':   'Proyectos iOS open-source — todos construidos con mentalidad nativa.',
-        'imangas-badge':   'Swift Developer Program · Proyecto Final',
-        'ios-app-badge':   'App iOS',
-        'imangas-desc':    'Gestor de colección de manga construido con los estándares de diseño de Apple. Consume una API REST con async/await, almacena datos localmente con SwiftData e integra WebKit para navegación in-app. La base académica que evolucionó en Mangora.',
-        'watchall-desc':   'App nativa para seguir películas y series de TV. Obtiene datos remotos con async/await sin bloquear el hilo principal. Interfaz SwiftUI limpia siguiendo las Human Interface Guidelines de Apple en todo momento.',
-        'rmt-desc':        'Explorador del universo Rick and Morty a través de su API oficial. Personajes, ubicaciones y episodios cargados de forma asíncrona y presentados con una arquitectura MVVM estructurada.',
-        'employees-desc':  'App de gestión de empleados con CRUD completo y persistencia local via Codable — sin frameworks externos. Búsqueda y filtrado nativo construido íntegramente con las herramientas de Apple.',
-        'mygarden-desc':   'Tracker de jardín y huerto. Gestiona cultivos, controla plagas y registra el crecimiento de plantas a través de una interfaz SwiftUI intuitiva, respaldada por SwiftData para persistencia local.',
-        'github-link':     'Ver en GitHub ↗',
-        'edu-label':       'Formación',
-        'edu-title':       'Educación.',
-        'edu1-desc':       'Swift Developer Program 2023 — Programa intensivo de 6 meses de desarrollo iOS. Swift, SwiftUI, Xcode y Human Interface Guidelines de Apple aplicadas en proyectos reales.',
-        'edu2-desc':       'CFGS Desarrollo de Aplicaciones Multiplataforma — Grado superior con base sólida en programación orientada a objetos, acceso a datos y gestión de sistemas de información.',
-        'contact-label':   'Contacto',
-        'contact-title':   'Construyamos<br>algo juntos.',
-        'contact-desc':    'Abierto a posiciones como desarrollador iOS — presencial o remoto. Si estás construyendo algo relevante para el ecosistema Apple, me encantaría escucharte.',
-        'contact-email':   'Enviar Email',
+        'nav-about':             'Sobre mí',
+        'nav-projects':          'Proyectos',
+        'nav-contact':           'Contacto',
+        'nav-available':         'Disponible',
+        'hero-cta':              'Ver Proyectos',
+        'about-label':           'Filosofía',
+        'about-statement':       'Construyo apps iOS <em>a la manera de Apple.</em> Frameworks nativos, arquitectura limpia y cero dependencias externas — porque el gran software <em>no necesita atajos.</em>',
+        'pillar1-title':         'SwiftUI Primero',
+        'pillar1-desc':          'Interfaces nativas que se sienten exactamente bien — construidas con SwiftUI y alineadas con las Human Interface Guidelines de Apple.',
+        'pillar2-desc':          'Persistencia local al estilo Apple. Sin la complejidad de Core Data, sin ORMs externos — solo gestión de datos limpia y nativa.',
+        'pillar3-desc':          'Concurrencia moderna que nunca bloquea. Código asíncrono limpio y legible, sin callbacks ni patrones heredados.',
+        'pillar4-title':         'Cero Dependencias',
+        'pillar4-desc':          'Si Apple lo incluye, lo aprovecho al máximo. Si no existe, lo construyo. Apps ligeras, mantenibles y libres de deuda técnica.',
+        'stack-label':           'Stack Técnico',
+        'stack-title':           'El stack.',
+        'stack-desc':            '100% ecosistema Apple — nativo, moderno y construido para durar.',
+        'appstore-label':        'Apps publicadas',
+        'appstore-eyebrow':      '★ Disponible en el App Store',
+        'mangora-desc':          'Gestor de biblioteca de manga para iPhone. Explora miles de títulos, organiza tu colección por estado — Leyendo, Leído, Favoritos — y descubre nuevos mangas con una interfaz rápida y limpia, construida con los estándares de diseño de Apple. Revisada y aprobada por Apple.',
+        'lumexia-desc':          'Gestor de biblioteca de libros para iPhone. Explora catálogos, organiza tu colección — Favoritos y Leídos — con ficha técnica completa por libro: autor, año, páginas, ISBN, precio y valoración. Construida con los estándares de diseño de Apple. Revisada y aprobada por Apple.',
+        'appstore-cta':          'Descargar en el App Store ↗',
+        'projects-label':        'Trabajo Seleccionado',
+        'projects-title':        'Proyectos.',
+        'projects-desc':         'Proyectos iOS open-source — todos construidos con mentalidad nativa.',
+        'lumexia-badge':         'App Store · iOS',
+        'imangas-badge':         'Swift Developer Program · Proyecto Final',
+        'ios-app-badge':         'App iOS',
+        'appstore-link':         'Ver en el App Store ↗',
+        'lumexia-project-desc':  'Gestor nativo de biblioteca de libros para iPhone. Carga paralela de datos con async/await, persistencia con SwiftData y relaciones entre modelos. Ficha técnica completa por libro con autor, año, páginas, ISBN y valoración. Capa de red basada en protocolo para máxima testabilidad.',
+        'imangas-desc':          'Gestor de colección de manga construido con los estándares de diseño de Apple. Consume una API REST con async/await, almacena datos localmente con SwiftData e integra WebKit para navegación in-app. La base académica que evolucionó en Mangora.',
+        'watchall-desc':         'App nativa para seguir películas y series de TV. Obtiene datos remotos con async/await sin bloquear el hilo principal. Interfaz SwiftUI limpia siguiendo las Human Interface Guidelines de Apple en todo momento.',
+        'rmt-desc':              'Explorador del universo Rick and Morty a través de su API oficial. Personajes, ubicaciones y episodios cargados de forma asíncrona y presentados con una arquitectura MVVM estructurada.',
+        'employees-desc':        'App de gestión de empleados con CRUD completo y persistencia local via Codable — sin frameworks externos. Búsqueda y filtrado nativo construido íntegramente con las herramientas de Apple.',
+        'mygarden-desc':         'Tracker de jardín y huerto. Gestiona cultivos, controla plagas y registra el crecimiento de plantas a través de una interfaz SwiftUI intuitiva, respaldada por SwiftData para persistencia local.',
+        'github-link':           'Ver en GitHub ↗',
+        'edu-label':             'Formación',
+        'edu-title':             'Educación.',
+        'edu1-desc':             'Swift Developer Program 2023 — Programa intensivo de 6 meses de desarrollo iOS. Swift, SwiftUI, Xcode y Human Interface Guidelines de Apple aplicadas en proyectos reales.',
+        'edu2-desc':             'CFGS Desarrollo de Aplicaciones Multiplataforma — Grado superior con base sólida en programación orientada a objetos, acceso a datos y gestión de sistemas de información.',
+        'contact-label':         'Contacto',
+        'contact-title':         'Construyamos<br>algo juntos.',
+        'contact-desc':          'Abierto a posiciones como desarrollador iOS — presencial o remoto. Si estás construyendo algo relevante para el ecosistema Apple, me encantaría escucharte.',
+        'contact-email':         'Enviar Email',
       },
       en: {
-        'nav-about':       'About',
-        'nav-projects':    'Projects',
-        'nav-contact':     'Contact',
-        'nav-available':   'Available',
-        'hero-cta':        'View Projects',
-        'about-label':     'Philosophy',
-        'about-statement': 'I build iOS apps <em>the Apple way.</em> Native frameworks, clean architecture, and zero external dependencies — because great software <em>doesn\'t need shortcuts.</em>',
-        'pillar1-title':   'SwiftUI First',
-        'pillar1-desc':    'Native interfaces that feel exactly right — built with SwiftUI and aligned with Apple\'s Human Interface Guidelines.',
-        'pillar2-desc':    'Local persistence done the Apple way. No Core Data complexity, no external ORMs — just clean, native data management.',
-        'pillar3-desc':    'Modern concurrency that never blocks. Clean, readable asynchronous code without callbacks or legacy patterns.',
-        'pillar4-title':   'Zero Dependencies',
-        'pillar4-desc':    'If Apple ships it, I use it. If not, I build it. Apps that are lightweight, maintainable, and free of technical debt.',
-        'stack-label':     'Tech Stack',
-        'stack-title':     'The stack.',
-        'stack-desc':      '100% Apple ecosystem — native, modern, and built to last.',
-        'appstore-eyebrow':'★ Now on the App Store',
-        'appstore-desc':   'Personal manga library manager for iPhone. Browse thousands of titles, organize your collection by status — Reading, Read, Favorites — and discover new mangas through a fast, clean interface built to Apple\'s design standards. Reviewed and approved by Apple.',
-        'appstore-cta':    'Download on the App Store ↗',
-        'projects-label':  'Selected Work',
-        'projects-title':  'Projects.',
-        'projects-desc':   'Open-source iOS projects — all built with a native-first mindset.',
-        'imangas-badge':   'Swift Developer Program · Final Project',
-        'ios-app-badge':   'iOS App',
-        'imangas-desc':    'Manga collection manager built to Apple\'s design standards. Consumes a REST API using async/await, stores data locally with SwiftData, and integrates WebKit for in-app navigation. The academic foundation that evolved into Mangora.',
-        'watchall-desc':   'Native app for tracking movies and TV series. Fetches remote data using async/await with zero blocking on the main thread. Clean SwiftUI interface following Apple\'s Human Interface Guidelines throughout.',
-        'rmt-desc':        'Explorer for the Rick and Morty universe via the official API. Characters, locations, and episodes loaded asynchronously and presented through a structured MVVM architecture.',
-        'employees-desc':  'Full CRUD employee management app with local persistence via Codable — no external frameworks. Native search and filtering built entirely with Apple\'s own tools.',
-        'mygarden-desc':   'Garden and vegetable patch tracker. Manage crops, monitor pest control, and log plant growth through an intuitive SwiftUI interface backed by SwiftData for local persistence.',
-        'github-link':     'View on GitHub ↗',
-        'edu-label':       'Background',
-        'edu-title':       'Education.',
-        'edu1-desc':       'Swift Developer Program 2023 — Intensive 6-month iOS development program. Swift, SwiftUI, Xcode, and Apple Human Interface Guidelines applied in real projects.',
-        'edu2-desc':       'CFGS Multiplatform Application Development — Higher degree with a solid foundation in object-oriented programming, data access, and information systems management.',
-        'contact-label':   'Get in Touch',
-        'contact-title':   'Let\'s build<br>something.',
-        'contact-desc':    'Open to iOS developer positions — on-site or remote. If you\'re building something meaningful for the Apple ecosystem, I\'d love to hear about it.',
-        'contact-email':   'Send an Email',
+        'nav-about':             'About',
+        'nav-projects':          'Projects',
+        'nav-contact':           'Contact',
+        'nav-available':         'Available',
+        'hero-cta':              'View Projects',
+        'about-label':           'Philosophy',
+        'about-statement':       'I build iOS apps <em>the Apple way.</em> Native frameworks, clean architecture, and zero external dependencies — because great software <em>doesn\'t need shortcuts.</em>',
+        'pillar1-title':         'SwiftUI First',
+        'pillar1-desc':          'Native interfaces that feel exactly right — built with SwiftUI and aligned with Apple\'s Human Interface Guidelines.',
+        'pillar2-desc':          'Local persistence done the Apple way. No Core Data complexity, no external ORMs — just clean, native data management.',
+        'pillar3-desc':          'Modern concurrency that never blocks. Clean, readable asynchronous code without callbacks or legacy patterns.',
+        'pillar4-title':         'Zero Dependencies',
+        'pillar4-desc':          'If Apple ships it, I use it. If not, I build it. Apps that are lightweight, maintainable, and free of technical debt.',
+        'stack-label':           'Tech Stack',
+        'stack-title':           'The stack.',
+        'stack-desc':            '100% Apple ecosystem — native, modern, and built to last.',
+        'appstore-label':        'Published Apps',
+        'appstore-eyebrow':      '★ Now on the App Store',
+        'mangora-desc':          'Personal manga library manager for iPhone. Browse thousands of titles, organise your collection by status — Reading, Read, Favorites — and discover new manga through a fast, clean interface built to Apple\'s design standards. Reviewed and approved by Apple.',
+        'lumexia-desc':          'Personal book library manager for iPhone. Browse catalogues, organise your collection — Favorites and Read — with a full technical sheet per book: author, year, pages, ISBN, price and rating. Built to Apple\'s design standards. Reviewed and approved by Apple.',
+        'appstore-cta':          'Download on the App Store ↗',
+        'projects-label':        'Selected Work',
+        'projects-title':        'Projects.',
+        'projects-desc':         'Open-source iOS projects — all built with a native-first mindset.',
+        'lumexia-badge':         'App Store · iOS',
+        'imangas-badge':         'Swift Developer Program · Final Project',
+        'ios-app-badge':         'iOS App',
+        'appstore-link':         'View on the App Store ↗',
+        'lumexia-project-desc':  'Native book library manager for iPhone. Parallel data loading with async/await, SwiftData persistence with model relationships. Full technical sheet per book with author, year, pages, ISBN and rating. Protocol-based networking layer for maximum testability.',
+        'imangas-desc':          'Manga collection manager built to Apple\'s design standards. Consumes a REST API using async/await, stores data locally with SwiftData, and integrates WebKit for in-app navigation. The academic foundation that evolved into Mangora.',
+        'watchall-desc':         'Native app for tracking movies and TV series. Fetches remote data using async/await with zero blocking on the main thread. Clean SwiftUI interface following Apple\'s Human Interface Guidelines throughout.',
+        'rmt-desc':              'Explorer for the Rick and Morty universe via the official API. Characters, locations, and episodes loaded asynchronously and presented through a structured MVVM architecture.',
+        'employees-desc':        'Full CRUD employee management app with local persistence via Codable — no external frameworks. Native search and filtering built entirely with Apple\'s own tools.',
+        'mygarden-desc':         'Garden and vegetable patch tracker. Manage crops, monitor pest control, and log plant growth through an intuitive SwiftUI interface backed by SwiftData for local persistence.',
+        'github-link':           'View on GitHub ↗',
+        'edu-label':             'Background',
+        'edu-title':             'Education.',
+        'edu1-desc':             'Swift Developer Program 2023 — Intensive 6-month iOS development program. Swift, SwiftUI, Xcode, and Apple Human Interface Guidelines applied in real projects.',
+        'edu2-desc':             'CFGS Multiplatform Application Development — Higher degree with a solid foundation in object-oriented programming, data access, and information systems management.',
+        'contact-label':         'Get in Touch',
+        'contact-title':         'Let\'s build<br>something.',
+        'contact-desc':          'Open to iOS developer positions — on-site or remote. If you\'re building something meaningful for the Apple ecosystem, I\'d love to hear about it.',
+        'contact-email':         'Send an Email',
       }
     };
-
+ 
     let currentLang = 'es';
-
+ 
     function setLanguage(lang) {
       currentLang = lang;
       document.documentElement.lang = lang;
-
-      // Update all translatable elements
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
         if (translations[lang][key] !== undefined) {
           el.innerHTML = translations[lang][key];
         }
       });
-
-      // Update button states
       document.getElementById('btn-es').classList.toggle('active', lang === 'es');
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     }
-
+ 
     // ── NAV ON SCROLL ──
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
-
+ 
     // ── SMOOTH SCROLL ──
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
@@ -579,7 +598,7 @@
         if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
       });
     });
-
+ 
     // ── FADE-UP ANIMATIONS ──
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -589,9 +608,9 @@
         }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
+ 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
-
+ 
 </body>
 </html>
